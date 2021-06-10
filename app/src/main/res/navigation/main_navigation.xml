@@ -3,24 +3,69 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/tasksFragment">
+    app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.sablab.memotodolist.loginfrag.LoginFragment"
         android:label="LoginFragment"
         tools:layout="@layout/activity_login"
-        />
+        >
+        <action
+            android:id="@+id/action_loginFragment_to_tasksFragment"
+            app:destination="@id/tasksFragment" />
+    </fragment>
     <fragment
         android:id="@+id/notesFragment"
         android:name="com.sablab.memotodolist.notesfrag.NotesFragment"
         android:label="NotesFragment"
         tools:layout="@layout/fragmet_notes"
-        />
+        >
+        <action
+            android:id="@+id/action_notesFragment_to_addNewNotesFragment"
+            app:destination="@id/addNewNotesFragment" />
+        <action
+            android:id="@+id/action_notesFragment_to_tasksFragment"
+            app:destination="@id/tasksFragment" />
+    </fragment>
     <fragment
         android:id="@+id/tasksFragment"
         android:name="com.sablab.memotodolist.tasksfrag.TasksFragment"
         android:label="TasksFragment"
         tools:layout="@layout/fragment_tasks"
-        />
+        >
+        <action
+            android:id="@+id/action_tasksFragment_to_addNewItems"
+            app:destination="@id/addNewItems" />
+        <argument
+            android:name="task"
+            app:argType="com.sablab.memotodolist.dataclasses.ToDoTask"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_tasksFragment_to_notesFragment"
+            app:destination="@id/notesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addNewItems"
+        android:name="com.sablab.memotodolist.additems.AddNewItems"
+        android:label="AddNewItems"
+        tools:layout="@layout/fragment_add_items"
+        >
+        <action
+            android:id="@+id/action_addNewItems_to_tasksFragment"
+            app:destination="@id/tasksFragment"
+
+            />
+
+    </fragment>
+    <fragment
+        android:id="@+id/addNewNotesFragment"
+        android:name="com.sablab.memotodolist.additems.AddNewNotesFragment"
+        android:label="AddNewNotesFragment"
+        tools:layout="@layout/fragment_add_items"
+        >
+        <action
+            android:id="@+id/action_addNewNotesFragment_to_notesFragment"
+            app:destination="@id/notesFragment" />
+    </fragment>
 </navigation>

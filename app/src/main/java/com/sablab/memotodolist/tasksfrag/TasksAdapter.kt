@@ -32,6 +32,7 @@ class TasksAdapter:ListAdapter<ToDoTask , TasksAdapter.TaskViewHolder>(TasksComp
             textDescription.paint.isStrikeThruText = task.done
             importantMark.isVisible = task.important
 
+
         }
         companion object {
             fun create(parent: ViewGroup): TaskViewHolder {
